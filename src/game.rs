@@ -23,7 +23,7 @@ impl Game {
     }
 
     pub fn update(&mut self) {
-        
+        if (self.snake.)
     }
 
     pub fn draw(&self) {
