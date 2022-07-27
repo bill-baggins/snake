@@ -1,7 +1,6 @@
 pub mod globals;
 pub mod snake;
 pub mod game;
-pub mod board;
 
 use crate::globals::global::*;
 use game::Game;

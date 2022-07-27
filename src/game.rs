@@ -1,32 +1,41 @@
 use macroquad::prelude::*;
 use crate::globals::global::*;
 
-use crate::snake::Snake;
-use crate::board::Board;
-
+type Board = [[State; BOARD_X]; BOARD_Y];
 
 pub struct Game {
-    snake: Snake,
     board: Board,
 }
 
 impl Game {
     pub fn new() -> Self {
-        let snake = Snake::new();
-        let mut board = Board::new();
-        board.set(4, 4, State::FRUIT);
-        Game { snake, board }
+        let mut board = [[State::EMPTY; BOARD_X]; BOARD_Y];
+        Game { board }
     }
 
     pub fn get_input(&mut self) {
-
+        
     }
 
     pub fn update(&mut self) {
-        if (self.snake.)
+    
     }
 
     pub fn draw(&self) {
-        self.board.draw()
+        self.draw_board();
+    }
+
+    fn draw_board(&self) {
+        for y in 0..BOARD_Y {
+            for x in 0..BOARD_X {
+                let cell = self.board[y][x];
+                let color = match cell {
+                    State::EMPTY => GRAY,
+                    State::FRUIT => RED,
+                    State::SNAKE => GREEN
+                };
+                draw_rectangle((x as i32 * CELL_X) as f32, (y as i32 * CELL_Y) as f32, CELL_X as f32, CELL_Y as f32, color);
+            }
+        }
     }
 }
